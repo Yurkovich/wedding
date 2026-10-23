@@ -1,0 +1,181 @@
+/* Дизайн-токены и общие правила страницы */
+
+:root {
+  --main-bg: #F8F4EE;
+  --main-bg-soft: #FCF9F5;
+  --main-bg-deep: #EFE7DC;
+  --main-text: #322D28;
+  --muted-text: #6E6459;
+  --accent: #C09B9B;
+  --accent-deep: #A87F7F;
+  --accent-green: #93A087;
+  --accent-beige: #CFB79A;
+  --main-line: rgba(50, 45, 40, 0.14);
+  --ff-title: 'Cormorant Garamond', 'Times New Roman', serif;
+  --ff-script: 'Marck Script', 'Segoe Script', cursive;
+  --ff-main: 'Manrope', 'Segoe UI', Arial, sans-serif;
+  --transition-fast: 180ms ease-out;
+  --transition-base: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --container-width: 1180px;
+  --container-padding: clamp(1.25rem, 5vw, 2.5rem);
+
+  /* Палитра дресс-кода. Меняется в одном месте. */
+  --palette-1: #570b0d;
+  --palette-2: #31190d;
+  --palette-3: #8b6751;
+  --palette-4: #d0a09e;
+  --palette-5: #726c4c;
+  --palette-6: #2d3211;
+  --palette-7: #7C8B84;
+}
+
+.body {
+  font-family: var(--ff-main);
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--main-text);
+  background-color: var(--main-bg);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  overflow-x: clip;
+}
+
+.main {
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+.section--tinted {
+  background-color: var(--main-bg-soft);
+}
+
+/* Скрытый текст для скринридеров */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+/* Заголовки секций */
+.section__title {
+  font-family: var(--ff-title);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--main-text);
+}
+
+.section__lead {
+  max-width: 46rem;
+  margin-inline: auto;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.8;
+  text-align: center;
+  text-wrap: pretty;
+  color: var(--muted-text);
+}
+
+/* Декоративный разделитель с ромбом */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.divider__line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--main-line);
+}
+
+.divider__mark {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-inline: 0.9rem;
+  background-color: var(--accent);
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+/* Общая логика появления при прокрутке.
+   Скрываем элементы только когда подключён JS (класс .js на <html>),
+   чтобы контент оставался доступным без скриптов. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .reveal--delayed {
+  transition-delay: 120ms;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Фокус для клавиатуры */
+.button:focus-visible,
+.faq__summary:focus-visible,
+.footer__link:focus-visible,
+.hero__button:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,44 @@
+/* Кнопка */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2.2rem;
+  font-family: var(--ff-main);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-text);
+  background-color: transparent;
+  background-image: linear-gradient(var(--accent-deep), var(--accent-deep));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 0;
+  border: 1px solid var(--accent-deep);
+  border-radius: 999px;
+  transition: background-size var(--transition-base), color var(--transition-base);
+}
+
+.button--ghost {
+  background-image: none;
+  border-color: var(--main-line);
+  color: var(--muted-text);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    color: var(--main-bg);
+    background-size: 100% 100%;
+  }
+
+  .button--ghost:hover {
+    border-color: var(--main-text);
+    color: var(--main-text);
+    background-size: 100% 0;
+  }
+}

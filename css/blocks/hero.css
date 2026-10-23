@@ -1,0 +1,236 @@
+/* Титульный экран — обложка приглашения */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: clamp(3rem, 8vw, 5rem);
+  background-color: var(--main-bg);
+  overflow: hidden;
+}
+
+.hero__container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: clamp(2.25rem, 7vw, 4.5rem) clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+  border: 1px solid var(--main-line);
+  outline: 1px solid var(--main-line);
+  outline-offset: 7px;
+  background-color: transparent;
+}
+
+.hero__ornament {
+  width: clamp(6rem, 16vw, 9.5rem);
+  height: auto;
+  color: var(--accent-green);
+  opacity: 0.85;
+}
+
+.hero__eyebrow {
+  font-family: var(--ff-main);
+  font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.85rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-wrap: balance;
+  color: var(--muted-text);
+}
+
+.hero__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  width: 100%;
+  font-family: var(--ff-title);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  color: var(--accent-deep);
+}
+
+.hero__label::before,
+.hero__label::after {
+  content: '';
+  flex: 1 1 auto;
+  max-width: 4.5rem;
+  height: 1px;
+  background-color: var(--main-line);
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.1rem, 0.6vw, 0.35rem);
+  font-family: var(--ff-title);
+  font-weight: 300;
+  line-height: 0.95;
+  color: var(--main-text);
+}
+
+.hero__name {
+  display: block;
+  font-size: clamp(2.9rem, 1.4rem + 7.2vw, 6.6rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+}
+
+.hero__ampersand {
+  display: block;
+  font-family: var(--ff-title);
+  font-style: italic;
+  font-size: clamp(1.9rem, 1.1rem + 3.4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.hero__date {
+  font-family: var(--ff-title);
+  font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+.hero__button {
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+
+.hero__sprig {
+  position: absolute;
+  bottom: -1rem;
+  left: -2rem;
+  width: clamp(7rem, 14vw, 12rem);
+  height: auto;
+  color: var(--accent-green);
+  opacity: 0.35;
+  transform: scaleX(-1);
+}
+
+/* Внутренний контент мягко проявляется при загрузке */
+@keyframes hero-appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Мягкое покачивание декоративных элементов */
+@keyframes hero-sway {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateY(-8px) rotate(-1.2deg);
+  }
+}
+
+.hero__inner > * {
+  animation: hero-appear 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero__inner > *:nth-child(2) {
+  animation-delay: 240ms;
+}
+
+.hero__inner > *:nth-child(3) {
+  animation-delay: 380ms;
+}
+
+.hero__inner > *:nth-child(4) {
+  animation-delay: 520ms;
+}
+
+.hero__inner > *:nth-child(5) {
+  animation-delay: 700ms;
+}
+
+.hero__inner > *:nth-child(6) {
+  animation-delay: 860ms;
+}
+
+/* Орнамент появляется первым и затем мягко покачивается */
+.hero__inner > .hero__ornament {
+  animation: hero-appear 1100ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both,
+    hero-sway 9s ease-in-out 1300ms infinite;
+}
+
+.hero__sprig {
+  animation: hero-sway-flip 11s ease-in-out infinite reverse;
+}
+
+@keyframes hero-sway-flip {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: scaleX(-1) translateY(-10px) rotate(1.4deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    outline-offset: 5px;
+  }
+
+  .hero__date {
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+  }
+}
+
+@media (max-width: 550px) {
+  .hero__inner {
+    padding-inline: clamp(1rem, 5vw, 1.75rem);
+  }
+
+  .hero__sprig {
+    left: -3.5rem;
+    opacity: 0.25;
+  }
+
+  .hero__label::before,
+  .hero__label::after {
+    max-width: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__ornament,
+  .hero__sprig,
+  .hero__inner > * {
+    animation: none;
+  }
+}

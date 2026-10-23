@@ -1,0 +1,90 @@
+/* Контакты */
+
+.contacts {
+  text-align: center;
+}
+
+.contacts__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.25rem, 3.5vw, 2rem);
+}
+
+.contacts__lead {
+  max-width: 40rem;
+}
+
+.contacts__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  width: 100%;
+  max-width: 44rem;
+  margin-top: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.contacts__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: clamp(1.75rem, 5vw, 2.75rem) clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--main-line);
+  background-color: var(--main-bg-soft);
+}
+
+.contacts__name {
+  font-family: var(--ff-title);
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: var(--main-text);
+}
+
+.contacts__phone {
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+  transition: color var(--transition-fast);
+}
+
+.contacts__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.contacts__button {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.7rem;
+}
+
+@media (hover: hover) {
+  .contacts__phone:hover {
+    color: var(--main-text);
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts__list {
+    grid-template-columns: 1fr;
+    max-width: 26rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .contacts__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contacts__button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,28 @@
+/* Место проведения */
+
+.venue {
+  text-align: center;
+}
+
+.venue__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.venue__icon {
+  width: clamp(2.25rem, 6vw, 3rem);
+  height: auto;
+  color: var(--accent-deep);
+}
+
+.venue__text {
+  max-width: 42rem;
+}
+
+@media (max-width: 600px) {
+  .venue__text {
+    max-width: 100%;
+  }
+}

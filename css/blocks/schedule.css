@@ -1,0 +1,136 @@
+/* Программа дня */
+
+.schedule {
+  text-align: center;
+}
+
+.schedule__inner {
+  display: block;
+}
+
+.schedule__list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.schedule__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+/* Горизонтальная линия времени */
+.schedule__list::before {
+  content: '';
+  position: absolute;
+  top: 0.55rem;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--main-line);
+}
+
+.schedule__marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: var(--main-bg);
+  border: 1px solid var(--accent-deep);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.schedule__marker::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.schedule__time {
+  font-family: var(--ff-title);
+  font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.95rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+}
+
+.schedule__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.schedule__name {
+  font-family: var(--ff-main);
+  font-size: clamp(0.78rem, 0.72rem + 0.3vw, 0.9rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--main-text);
+}
+
+.schedule__text {
+  font-size: clamp(0.9rem, 0.86rem + 0.2vw, 1rem);
+  font-weight: 300;
+  line-height: 1.7;
+  text-wrap: pretty;
+  color: var(--muted-text);
+}
+
+/* Вертикальная линия времени на узких экранах */
+@media (max-width: 900px) {
+  .schedule__list {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 34rem;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .schedule__list::before {
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 5px;
+    width: 1px;
+    height: auto;
+  }
+
+  .schedule__item {
+    align-items: flex-start;
+    padding: 0 0 clamp(1.75rem, 5vw, 2.5rem) clamp(1.75rem, 6vw, 2.5rem);
+    text-align: left;
+  }
+
+  .schedule__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .schedule__marker {
+    top: 0.5rem;
+    left: 0;
+  }
+
+  .schedule__time {
+    font-size: clamp(1.3rem, 1.1rem + 1.4vw, 1.7rem);
+  }
+}
+
+@media (max-width: 550px) {
+  .schedule__text {
+    max-width: 26rem;
+  }
+}

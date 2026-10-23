@@ -1,0 +1,148 @@
+/* Дата свадьбы и календарь */
+
+.date {
+  text-align: center;
+}
+
+.date__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.75rem, 5vw, 3rem);
+}
+
+.date__title {
+  max-width: 40rem;
+  margin-inline: auto;
+  font-family: var(--ff-title);
+  font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+  color: var(--main-text);
+}
+
+.date__calendar {
+  width: 100%;
+}
+
+/* Календарь */
+
+.calendar {
+  max-width: 30rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--main-line);
+  background-color: var(--main-bg-soft);
+}
+
+.calendar__month {
+  font-family: var(--ff-title);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  color: var(--main-text);
+}
+
+.calendar__table {
+  width: 100%;
+  margin-top: clamp(1.25rem, 3vw, 1.85rem);
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar__weekday {
+  padding-block: 0.6rem;
+  font-family: var(--ff-main);
+  font-size: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  border-bottom: 1px solid var(--main-line);
+}
+
+.calendar__cell {
+  padding-block: clamp(0.35rem, 1.2vw, 0.6rem);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.calendar__cell--special {
+  position: relative;
+}
+
+.calendar__day {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(1.9rem, 6.5vw, 2.5rem);
+  height: clamp(1.9rem, 6.5vw, 2.5rem);
+  font-family: var(--ff-title);
+  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--main-text);
+  border-radius: 50%;
+}
+
+.calendar__day--special {
+  z-index: 1;
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+
+/* Сердечко-маркер под датой свадьбы */
+.calendar__heart {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: clamp(2.35rem, 2.9vw, 2.9rem);
+  height: auto;
+  fill: var(--accent-deep);
+  transform: translateX(-50%);
+}
+
+/* Мягкое биение сердечка */
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.22);
+  }
+}
+
+.calendar__heart {
+  animation: heart-beat 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calendar__heart {
+    animation: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .calendar {
+    padding-inline: 0.65rem;
+  }
+
+  .calendar__month {
+    letter-spacing: 0.16em;
+    text-indent: 0.16em;
+  }
+
+  .calendar__weekday {
+    letter-spacing: 0.04em;
+  }
+}

@@ -1,0 +1,49 @@
+/* Приветствие гостей */
+
+.greeting {
+  text-align: center;
+}
+
+.greeting__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.greeting__title {
+  font-family: var(--ff-main);
+  font-size: clamp(1.35rem, 1.05rem + 1.5vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--main-text);
+}
+
+.greeting__script {
+  margin-top: clamp(0.25rem, 1.5vw, 1rem);
+  font-family: var(--ff-script);
+  font-size: clamp(2.4rem, 1.5rem + 4vw, 4.4rem);
+  line-height: 1.1;
+  color: var(--accent-deep);
+}
+
+.greeting__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 38rem;
+  margin-top: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.greeting__paragraph {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.85;
+  text-wrap: pretty;
+  color: var(--muted-text);
+}

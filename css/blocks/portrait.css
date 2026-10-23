@@ -1,0 +1,56 @@
+/* Фотография молодожёнов */
+
+.portrait {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  background-color: var(--main-bg);
+}
+
+.portrait__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.portrait__figure {
+  max-width: 42rem;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.portrait__frame {
+  position: relative;
+  padding: clamp(0.6rem, 1.6vw, 1rem);
+  border: 1px solid var(--main-line);
+  background-color: var(--main-bg-soft);
+}
+
+.portrait__frame::after {
+  content: '';
+  position: absolute;
+  inset: clamp(1.1rem, 2.6vw, 1.7rem);
+  border: 1px solid rgba(192, 155, 155, 0.28);
+  pointer-events: none;
+}
+
+.portrait__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background-color: var(--main-bg-deep);
+}
+
+.portrait__caption {
+  margin-top: clamp(1.1rem, 3vw, 1.6rem);
+  font-family: var(--ff-script);
+  font-size: clamp(1.15rem, 1rem + 0.9vw, 1.65rem);
+  line-height: 1.4;
+  color: var(--accent-deep);
+}
+
+@media (max-width: 600px) {
+  .portrait__figure {
+    max-width: 100%;
+  }
+}
