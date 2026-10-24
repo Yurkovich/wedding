@@ -1,19 +1,19 @@
-/* Интерактив страницы-приглашения:
-   1) плавное появление блоков при прокрутке;
-   2) мягкий переход с титульного экрана к приглашению. */
-
 (function () {
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobileQuery = window.matchMedia('(max-width: 768px)');
 
-  /* Плавное появление при прокрутке */
   var revealItems = document.querySelectorAll('.reveal');
 
-  if (reduceMotion || !('IntersectionObserver' in window)) {
+  function showAllReveal() {
     revealItems.forEach(function (item) {
       item.classList.add('is-visible');
     });
+  }
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    showAllReveal();
   } else {
     var observer = new IntersectionObserver(
       function (entries) {
@@ -35,9 +35,88 @@
     revealItems.forEach(function (item) {
       observer.observe(item);
     });
+
+    function revealAtBottom() {
+      var scrollBottom = window.scrollY + window.innerHeight;
+      var documentHeight = document.documentElement.scrollHeight;
+
+      if (scrollBottom >= documentHeight - 4) {
+        showAllReveal();
+      }
+    }
+
+    window.addEventListener('scroll', revealAtBottom, { passive: true });
+    window.addEventListener('resize', revealAtBottom);
+    revealAtBottom();
   }
 
-  /* Кнопка «Открыть приглашение» — плавный переход к содержимому */
+  var backgroundVideo = document.querySelector('[data-background-video]');
+  var backgroundLayer = document.querySelector('.background');
+  var parallaxTick = 0;
+
+  function syncBackgroundVideo() {
+    if (!backgroundVideo) {
+      return;
+    }
+
+    if (mobileQuery.matches && !reduceMotion) {
+      backgroundVideo.muted = true;
+      var playPromise = backgroundVideo.play();
+
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {});
+      }
+    } else {
+      backgroundVideo.pause();
+    }
+  }
+
+  function updateParallax() {
+    parallaxTick = 0;
+
+    if (!backgroundVideo || !backgroundLayer || !mobileQuery.matches || reduceMotion) {
+      return;
+    }
+
+    var maxShift = window.innerHeight * 0.08;
+    var offset = window.scrollY * -0.15;
+
+    if (offset < -maxShift) {
+      offset = -maxShift;
+    } else if (offset > maxShift) {
+      offset = maxShift;
+    }
+
+    backgroundVideo.style.transform = 'translate3d(0, ' + offset.toFixed(2) + 'px, 0)';
+  }
+
+  function requestParallax() {
+    if (parallaxTick) {
+      return;
+    }
+
+    parallaxTick = window.requestAnimationFrame(updateParallax);
+  }
+
+  syncBackgroundVideo();
+
+  if (backgroundLayer && !reduceMotion) {
+    updateParallax();
+    window.addEventListener('scroll', requestParallax, { passive: true });
+  }
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', function () {
+      syncBackgroundVideo();
+      updateParallax();
+    });
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(function () {
+      syncBackgroundVideo();
+      updateParallax();
+    });
+  }
+
   var openButton = document.querySelector('[data-hero-open]');
 
   if (openButton) {

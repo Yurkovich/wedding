@@ -1,9 +1,9 @@
-/* Дизайн-токены и общие правила страницы */
-
 :root {
   --main-bg: #F8F4EE;
   --main-bg-soft: #FCF9F5;
   --main-bg-deep: #EFE7DC;
+  --main-bg-veil: rgba(248, 244, 238, 0.5);
+  --main-bg-soft-veil: rgba(252, 249, 245, 0.38);
   --main-text: #322D28;
   --muted-text: #6E6459;
   --accent: #C09B9B;
@@ -19,7 +19,6 @@
   --container-width: 1180px;
   --container-padding: clamp(1.25rem, 5vw, 2.5rem);
 
-  /* Палитра дресс-кода. Меняется в одном месте. */
   --palette-1: #570b0d;
   --palette-2: #31190d;
   --palette-3: #8b6751;
@@ -38,6 +37,12 @@
   background-color: var(--main-bg);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+  .body {
+    background-color: transparent;
+  }
 }
 
 .wrapper {
@@ -63,7 +68,12 @@
   background-color: var(--main-bg-soft);
 }
 
-/* Скрытый текст для скринридеров */
+@media (max-width: 768px) {
+  .section--tinted {
+    background-color: var(--main-bg-soft-veil);
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -76,7 +86,6 @@
   border: 0;
 }
 
-/* Заголовки секций */
 .section__title {
   font-family: var(--ff-title);
   font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem);
@@ -100,7 +109,6 @@
   color: var(--muted-text);
 }
 
-/* Декоративный разделитель с ромбом */
 .divider {
   display: flex;
   align-items: center;
@@ -128,9 +136,6 @@
   opacity: 0.75;
 }
 
-/* Общая логика появления при прокрутке.
-   Скрываем элементы только когда подключён JS (класс .js на <html>),
-   чтобы контент оставался доступным без скриптов. */
 .js .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -148,7 +153,6 @@
   transform: translateY(0);
 }
 
-/* Фокус для клавиатуры */
 .button:focus-visible,
 .faq__summary:focus-visible,
 .footer__link:focus-visible,

@@ -38,6 +38,12 @@
 </head>
 
 <body class="body">
+  <div class="background" aria-hidden="true">
+    <video class="background__video" src="./media/background.mp4" muted loop playsinline preload="none"
+      data-background-video></video>
+    <div class="background__overlay"></div>
+  </div>
+
   <div class="wrapper">
     <header class="hero" id="cover">
       <div class="container hero__container">
@@ -97,13 +103,13 @@
     </header>
 
     <main class="main">
-      <!-- Фотография молодожёнов -->
+
       <section class="section portrait" id="portrait">
         <div class="container">
           <div class="portrait__inner">
             <figure class="portrait__figure reveal">
               <div class="portrait__frame">
-                <!-- Замените файл ./media/couple.jpg на настоящую фотографию (те же пропорции 4:5) -->
+
                 <img src="./media/couple.svg" alt="Александр и Валерия" class="portrait__img" width="1200"
                   height="1500" loading="lazy" decoding="async">
               </div>
@@ -113,7 +119,6 @@
         </div>
       </section>
 
-      <!-- Приветствие гостей -->
       <section class="section section--tinted greeting" id="greeting">
         <div class="container">
           <div class="greeting__inner">
@@ -132,7 +137,6 @@
         </div>
       </section>
 
-      <!-- Дата свадьбы и календарь -->
       <section class="section date" id="date">
         <div class="container">
           <div class="date__inner">
@@ -213,7 +217,6 @@
         </div>
       </section>
 
-      <!-- Место проведения -->
       <section class="section section--tinted venue" id="venue">
         <div class="container">
           <div class="venue__inner">
@@ -229,12 +232,10 @@
             <p class="venue__text section__lead reveal reveal--delayed">Выездная церемония и праздничный банкет будут
               проходить в населённом пункте Нижний Ингаш</p>
 
-            <!-- Когда появятся точные данные о площадке, добавьте здесь карту или ссылку на маршрут -->
           </div>
         </div>
       </section>
 
-      <!-- Программа дня -->
       <section class="section schedule" id="schedule">
         <div class="container">
           <div class="schedule__inner">
@@ -287,7 +288,6 @@
         </div>
       </section>
 
-      <!-- Важная информация для гостей -->
       <section class="section section--tinted note" id="note">
         <div class="container">
           <div class="note__inner">
@@ -300,7 +300,6 @@
         </div>
       </section>
 
-      <!-- Дресс-код -->
       <section class="section dresscode" id="dresscode">
         <div class="container">
           <div class="dresscode__inner">
@@ -338,16 +337,12 @@
                 <span class="dresscode__circle dresscode__circle--6" aria-hidden="true"></span>
                 <span class="visually-hidden">Оттенок 6</span>
               </li>
-              <!-- <li class="dresscode__swatch">
-                <span class="dresscode__circle dresscode__circle--7" aria-hidden="true"></span>
-                <span class="visually-hidden">Оттенок 7</span>
-              </li> -->
+
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- Часто задаваемые вопросы -->
       <section class="section section--tinted faq" id="faq">
         <div class="container">
           <div class="faq__inner">
@@ -389,7 +384,6 @@
         </div>
       </section>
 
-      <!-- Контакты -->
       <section class="section contacts" id="contacts">
         <div class="container">
           <div class="contacts__inner">
@@ -401,7 +395,7 @@
             <ul class="contacts__list">
               <li class="contacts__card reveal">
                 <p class="contacts__name">Александр</p>
-                <!-- Замените номер телефона и ссылку на мессенджер на реальные данные -->
+
                 <a href="tel:+70000000000" class="contacts__phone">+7 (000) 000-00-00</a>
                 <div class="contacts__actions">
                   <a href="tel:+70000000000" class="contacts__button button">Позвонить</a>
@@ -412,7 +406,7 @@
 
               <li class="contacts__card reveal reveal--delayed">
                 <p class="contacts__name">Валерия</p>
-                <!-- Замените номер телефона и ссылку на мессенджер на реальные данные -->
+
                 <a href="tel:+70000000000" class="contacts__phone">+7 (000) 000-00-00</a>
                 <div class="contacts__actions">
                   <a href="tel:+70000000000" class="contacts__button button">Позвонить</a>

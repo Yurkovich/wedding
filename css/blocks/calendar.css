@@ -1,5 +1,3 @@
-/* Дата свадьбы и календарь */
-
 .date {
   text-align: center;
 }
@@ -26,8 +24,6 @@
 .date__calendar {
   width: 100%;
 }
-
-/* Календарь */
 
 .calendar {
   max-width: 30rem;
@@ -98,7 +94,6 @@
   font-weight: 500;
 }
 
-/* Сердечко-маркер под датой свадьбы */
 .calendar__heart {
   position: absolute;
   bottom: 0;
@@ -110,7 +105,6 @@
   transform: translateX(-50%);
 }
 
-/* Мягкое биение сердечка */
 @keyframes heart-beat {
   0%,
   100% {

@@ -1,9 +1,8 @@
-/* base */
 @import './base/reset.css';
 @import './base/fonts.css';
 @import './base/global.css';
 
-/* blocks */
+@import './blocks/background.css';
 @import './blocks/hero.css';
 @import './blocks/portrait.css';
 @import './blocks/greeting.css';

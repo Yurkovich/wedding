@@ -1,5 +1,3 @@
-/* Титульный экран — обложка приглашения */
-
 .hero {
   position: relative;
   display: flex;
@@ -128,7 +126,6 @@
   transform: scaleX(-1);
 }
 
-/* Внутренний контент мягко проявляется при загрузке */
 @keyframes hero-appear {
   from {
     opacity: 0;
@@ -141,7 +138,6 @@
   }
 }
 
-/* Мягкое покачивание декоративных элементов */
 @keyframes hero-sway {
   0%,
   100% {
@@ -179,7 +175,6 @@
   animation-delay: 860ms;
 }
 
-/* Орнамент появляется первым и затем мягко покачивается */
 .hero__inner > .hero__ornament {
   animation: hero-appear 1100ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both,
     hero-sway 9s ease-in-out 1300ms infinite;
@@ -201,6 +196,11 @@
 }
 
 @media (max-width: 768px) {
+
+  .hero {
+    background-color: transparent;
+  }
+
   .hero__inner {
     outline-offset: 5px;
   }

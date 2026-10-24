@@ -1,5 +1,3 @@
-/* Фотография молодожёнов */
-
 .portrait {
   padding-block: clamp(3.5rem, 9vw, 7rem);
   background-color: var(--main-bg);
@@ -47,6 +45,13 @@
   font-size: clamp(1.15rem, 1rem + 0.9vw, 1.65rem);
   line-height: 1.4;
   color: var(--accent-deep);
+}
+
+@media (max-width: 768px) {
+
+  .portrait {
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 600px) {

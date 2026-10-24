@@ -1,5 +1,3 @@
-/* Финал страницы */
-
 .footer {
   position: relative;
   padding-block: clamp(4rem, 10vw, 7rem);
@@ -48,7 +46,6 @@
   color: var(--muted-text);
 }
 
-/* Тонкая декоративная линия над финалом */
 .footer__inner::before {
   content: '';
   display: block;
@@ -57,4 +54,11 @@
   margin-bottom: clamp(0.5rem, 2vw, 1rem);
   background-color: var(--accent);
   opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    background-color: transparent;
+  }
 }
