@@ -36,6 +36,7 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: top;
   background-color: var(--main-bg-deep);
 }
 
